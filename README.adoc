@@ -133,6 +133,20 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
 
+L'architecture hexagonale favorise une séparation nette entre la logique métier d'une application et son infrastructure
+technique, ce qui apporte plusieurs bénéfices importants :
+
+Organisation optimisée du code : En isolant la logique métier, l'architecture hexagonale rend le code plus clair,
+plus facile à comprendre et à maintenir.
+
+Flexibilité et modularité accrues : Les ports et adaptateurs permettent d'interchanger
+les composants techniques (bases de données, interfaces utilisateur, etc.)
+sans impacter la logique métier, offrant ainsi une grande flexibilité.
+
+Testabilité et évolutivité facilitées : L'isolation de la logique métier simplifie les tests unitaires et favorise
+l'évolution de l'application, car les modifications apportées à l'infrastructure n'affectent
+pas le cœur de l'application.
+
 Compléter ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
 
 * prend un `TodoItem` au format JSON dans le body (voir exemple de contenu plus haut);
@@ -147,7 +161,12 @@ _Temps estimé : 20 mins_
 
 * Implémenter (en junit) des TU portant sur la règle de gestion qui consiste à afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
 
-*Quels types de tests devra-t-on écrire pour les adaptateurs ?* 
+*Quels types de tests devra-t-on écrire pour les adaptateurs ?*
+
+Au minimum 2 tests devront être faits:
+- Un pour vérifier qu'un todo qui n'est pas en retard ne contient pas "[LATE!]".
+
+- Un pour vérifier qu'un todo en retard contient "[LATE!]".
 
 *S'il vous reste du temps, écrire quelques-uns de ces types de test.*
 
